@@ -1,0 +1,194 @@
+m255
+K4
+z2
+Z0 !s12c _opt5
+Z1 !s99 nomlopt
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+Z2 !s12c _opt3
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+Z3 !s12c _opt
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+!s11f vlog 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dF:/QuestaSim/intelFPGA/23.1std
+T_opt5
+!s110 1730759230
+VM9[K2KI1c_jh;Ul4ThO:h3
+04 15 4 work tb_trace_parser fast 0
+=1-ecb1d7dba325-67294a3e-b6-4704
+R1
+!s12b OEM100
+!s124 OEM10U1 
+o-quiet -auto_acc_if_foreign -work work
+Z4 tCvgOpt 0
+n@_opt5
+OL;O;2023.3;77
+vparser
+Z5 2F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv
+Z6 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z7 !s110 1730759091
+!i10b 1
+!s100 cO[M4[=^CQ[=mH672=1LB0
+I]XR4QVa3A0U2h45>6@QG83
+S1
+Z8 dF:/MSD/Final Project/GitHub/MSD_Project
+Z9 w1730684727
+Z10 8F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv
+Z11 FF:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv
+!i122 51
+L0 16 10
+Z12 VDg1SIo80bB@j0V0VzS_@n1
+Z13 OL;L;2023.3;77
+r1
+!s85 0
+31
+Z14 !s108 1730759091.000000
+Z15 !s107 F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv|
+Z16 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv|
+!i113 0
+Z17 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vtb_trace_parser
+2tb_trace_parser.sv
+R6
+!s110 1730759214
+!i10b 1
+!s100 cP_6C7ESH9H6=^QE6U8gU3
+IG;olXgUY=kJMiNdh8QU;R1
+S1
+R8
+w1730759081
+8tb_trace_parser.sv
+Ftb_trace_parser.sv
+!i122 53
+L0 1 42
+R12
+R13
+r1
+!s85 0
+31
+!s108 1730759213.000000
+!s107 tb_trace_parser.sv|
+!s90 -reportprogress|300|-sv|+define+LINE=4|tb_trace_parser.sv|
+!i113 0
+o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -sv +define+LINE=4 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vtrace
+R5
+R6
+R7
+!i10b 1
+!s100 I?I2iNZf=PE3j;bME[LDc1
+IKJG_0^H3g6WaPG[=AOYT63
+S1
+R8
+R9
+R10
+R11
+!i122 51
+L0 1 14
+R12
+R13
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 0
+R17
+R4
+vtrace_parser
+2F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
+R6
+!s110 1730603289
+!i10b 1
+!s100 T_kZZciIn34<<SDh0g5WH2
+IYME`b@`d0?:K0a5iXV[Nj1
+S1
+R8
+w1730603276
+8F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
+FF:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
+!i122 13
+L0 1 39
+R12
+R13
+r1
+!s85 0
+31
+!s108 1730603289.000000
+!s107 F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv|
+!s90 -reportprogress|300|-work|LLC_SV|-vopt|-sv|-stats=none|F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv|
+!i113 0
+o-work LLC_SV -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
