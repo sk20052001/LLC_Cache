@@ -24,7 +24,10 @@ module tb_trace_parser;
 
 		while ($fscanf(file_handle, "%d %h", operation, address) == 2) begin
 			line_number++;
-			$display("Line %0d: Operation: %0d, Address: %h", line_number, operation, address);
+			`ifdef LINE
+				//if(LINE == line_number)
+					$display("Line %0d: Operation: %0d, Address: %h", line_number, operation, address);
+			`endif
 		end
 		//while (!$feof(file_handle)) begin
 		//	line_number++;
