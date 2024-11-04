@@ -1,194 +1,65 @@
-dataset reload -f
-# Dataset not found: 
-# Error opening F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
-# Path name 'F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv' doesn't exist.
-# Compile of trace_parser.sv failed with 1 errors.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 1 failed with 1 error.
-# Compile of trace_parser.sv was successful with warnings.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
 # Compile of trace_parser.sv was successful.
 # Compile of tb_trace_parser.sv was successful.
 # 2 compiles, 0 failed with no errors.
-vsim LLC_SV.trace_parser
-# vsim LLC_SV.trace_parser 
-# Start time: 14:50:36 on Nov 03,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt3
-# Loading sv_std.std
-# Loading work.trace_parser(fast)
-quit -sim
-# End time: 14:50:51 on Nov 03,2024, Elapsed time: 0:00:15
-# Errors: 0, Warnings: 7
-vsim LLC_SV.trace
-# vsim LLC_SV.trace 
-# Start time: 14:51:47 on Nov 03,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading sv_std.std
-# Loading work.trace(fast)
-quit -sim
-# End time: 14:51:59 on Nov 03,2024, Elapsed time: 0:00:12
+vlog -sv +define+LINE tb_trace_parser.sv vsim -c  +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# ** Error (suppressible): (vlog-1902) Option "-c" is not a valid option for this tool.
+# Use the -help option for complete vlog usage.
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+vlog +define+LINE tb_trace_parser.sv vsim -c  +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# ** Error (suppressible): (vlog-1902) Option "-c" is not a valid option for this tool.
+# Use the -help option for complete vlog usage.
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+vlog +define+LINE tb_trace_parser.sv vsim +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# ** Error (suppressible): (vlog-1902) Option "-do" is not a valid option for this tool.
+# Use the -help option for complete vlog usage.
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+vlib LLC_SV
+# ** Warning: (vlib-34) Library already exists at "LLC_SV".
 # Errors: 0, Warnings: 1
-vsim LLC_SV.tb_trace_parser +trace_file="./Files/rwims.din" -do "run -all"
-# vsim LLC_SV.tb_trace_parser "+trace_file="./Files/rwims.din"" -do "run -all" 
-# Start time: 14:58:12 on Nov 03,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# Loading work.trace(fast)
-# Loading work.parser(fast)
-# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$fscanf'.
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser/parserINST File: F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_trace_parser/traceINST/trace_file' written by continuous and procedural assignments. See F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(8).
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser/traceINST File: F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv Line: 7
-# Error loading design
-# End time: 14:58:14 on Nov 03,2024, Elapsed time: 0:00:02
-# Errors: 1, Warnings: 2
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vsim LLC_SV.tb_trace_parser +trace_file="./Files/rwims.din" -do "run -all"
-# vsim LLC_SV.tb_trace_parser "+trace_file="./Files/rwims.din"" -do "run -all" 
-# Start time: 15:06:13 on Nov 03,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# Loading work.trace(fast)
-# Loading work.parser(fast)
-# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$fscanf'.
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser/parserINST File: F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_trace_parser/traceINST/trace_file' written by continuous and procedural assignments. See F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(8).
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser/traceINST File: F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv Line: 7
-# Error loading design
-# End time: 15:06:15 on Nov 03,2024, Elapsed time: 0:00:02
-# Errors: 1, Warnings: 3
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vsim LLC_SV.tb_trace_parser +trace_file="./Files/rwims.din" -do "run -all"
-# vsim LLC_SV.tb_trace_parser "+trace_file="./Files/rwims.din"" -do "run -all" 
-# Start time: 15:12:18 on Nov 03,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# Loading work.trace(fast)
-# Loading work.parser(fast)
-# ** Warning: (vsim-PLI-3691) Expected a system task, not a system function '$fscanf'.
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser/parserINST File: F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_trace_parser/traceINST/trace_file' written by continuous and procedural assignments. See F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(8).
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser/traceINST File: F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv Line: 7
-# ** Error (suppressible): (vsim-3839) Variable '/tb_trace_parser/file_handle', driven via a port connection, is multiply driven. See F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(8).
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser File: F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv Line: 16
-# Error loading design
-# End time: 15:12:20 on Nov 03,2024, Elapsed time: 0:00:02
-# Errors: 2, Warnings: 3
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vsim LLC_SV.tb_trace_parser +trace_file="./Files/rwims.din" -do "run -all"
-# vsim LLC_SV.tb_trace_parser "+trace_file="./Files/rwims.din"" -do "run -all" 
-# Start time: 15:12:48 on Nov 03,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
+vlog -sv +define+LINE LLC_SV.tb_trace_parser
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 13:09:51 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE" LLC_SV.tb_trace_parser 
+# ** Error: (vlog-7) Failed to open design unit file "LLC_SV.tb_trace_parser" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 13:09:52 on Nov 04,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+vlog -sv +define+LINE ./LLC_SV/tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 13:10:15 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE" ./LLC_SV/tb_trace_parser.sv 
+# ** Error: (vlog-7) Failed to open design unit file "./LLC_SV/tb_trace_parser.sv" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 13:10:15 on Nov 04,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+vlog -sv +define+LINE tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 13:10:25 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# 
+# Top level modules:
+# 	tb_trace_parser
+# End time: 13:10:25 on Nov 04,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -c +trace_file=./Files/rwims.din -do "run -all"
+# No design specified
+vsim -c +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
+# OpenFile tb_trace_parser.sv
 # run -all
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file ""./Files/rwims.din"" for reading.
-# Invalid argument. (errno = EINVAL)    : F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(16)
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser
-# Reading and parsing trace file: "./Files/rwims.din"
-# ** Error (suppressible): (vsim-PLI-3084) $fscanf : Argument 1 is not a valid file descriptor.
-#    Time: 0 ns  Iteration: 0  Process: /tb_trace_parser/#INITIAL#11 File: F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv Line: 25
-# Finished reading the trace file.
-quit -sim
-# End time: 15:13:18 on Nov 03,2024, Elapsed time: 0:00:30
-# Errors: 1, Warnings: 3
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vsim LLC_SV.tb_trace_parser +trace_file="./Files/rwims.din" -do "run -all"
-# vsim LLC_SV.tb_trace_parser "+trace_file="./Files/rwims.din"" -do "run -all" 
-# Start time: 15:15:15 on Nov 03,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# run -all
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file ""./Files/rwims.din"" for reading.
-# Invalid argument. (errno = EINVAL)    : F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(16)
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser
-# Reading and parsing trace file: "./Files/rwims.din"
-# ** Error (suppressible): (vsim-PLI-3084) $fscanf : Argument 1 is not a valid file descriptor.
-#    Time: 0 ns  Iteration: 0  Process: /tb_trace_parser/#INITIAL#11 File: F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv Line: 25
-# Finished reading the trace file.
-quit -sim
-# End time: 15:15:32 on Nov 03,2024, Elapsed time: 0:00:17
-# Errors: 1, Warnings: 3
-vsim LLC_SV.tb_trace_parser +trace_file="./LLC_SV/Files/rwims.din" -do "run -all"
-# vsim LLC_SV.tb_trace_parser "+trace_file="./LLC_SV/Files/rwims.din"" -do "run -all" 
-# Start time: 15:16:05 on Nov 03,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt3
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# run -all
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file ""./LLC_SV/Files/rwims.din"" for reading.
-# Invalid argument. (errno = EINVAL)    : F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(16)
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser
-# Reading and parsing trace file: "./LLC_SV/Files/rwims.din"
-# ** Error (suppressible): (vsim-PLI-3084) $fscanf : Argument 1 is not a valid file descriptor.
-#    Time: 0 ns  Iteration: 0  Process: /tb_trace_parser/#INITIAL#11 File: F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv Line: 25
-# Finished reading the trace file.
-vsim -trace_file="./LLC_SV/Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
-# ** UI-Msg (Error): (vish-3296) Unknown option '-trace_file="./LLC_SV/Files/rwims.din"'.
-# Use the -help option for complete vsim usage.
-# Error loading design
-vsim trace_file="./LLC_SV/Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
-# End time: 15:19:36 on Nov 03,2024, Elapsed time: 0:03:31
-# Errors: 1, Warnings: 2
-# vsim trace_file="./LLC_SV/Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim" 
-# Start time: 15:19:36 on Nov 03,2024
+# No Design Loaded!
+vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
+# vsim -c "+trace_file=./Files/rwims.din" tb_trace_parser -do "run -all" 
+# Start time: 13:13:13 on Nov 04,2024
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error (suppressible): (vopt-19) Failed to access library 'work.trace_file="./LLC_SV/Files/rwims' at "work.trace_file="./LLC_SV/Files/rwims".
-# Invalid argument. (errno = EINVAL)
-# ** Error (suppressible): (vopt-19) Failed to access library 'work.trace_file="./LLC_SV/Files/rwims' at "work.trace_file="./LLC_SV/Files/rwims".
-# Invalid argument. (errno = EINVAL)
-# Optimization failed
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=0.
-# Error loading design
-# End time: 15:19:37 on Nov 03,2024, Elapsed time: 0:00:01
-# Errors: 2, Warnings: 1
-vsim trace_file="./Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
-# vsim trace_file="./Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim" 
-# Start time: 15:20:03 on Nov 03,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error (suppressible): (vopt-19) Failed to access library 'work.trace_file="./Files/rwims' at "work.trace_file="./Files/rwims".
-# Invalid argument. (errno = EINVAL)
-# ** Error (suppressible): (vopt-19) Failed to access library 'work.trace_file="./Files/rwims' at "work.trace_file="./Files/rwims".
-# Invalid argument. (errno = EINVAL)
-# Optimization failed
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=0.
-# Error loading design
-# End time: 15:20:04 on Nov 03,2024, Elapsed time: 0:00:01
-# Errors: 2, Warnings: 1
-vsim +trace_file="./Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
-# vsim "+trace_file="./Files/rwims.din"" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim" 
-# Start time: 15:21:05 on Nov 03,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# run -all
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file ""./Files/rwims.din"" for reading.
-# Invalid argument. (errno = EINVAL)    : F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv(16)
-#    Time: 0 ns  Iteration: 0  Instance: /tb_trace_parser
-# Reading and parsing trace file: "./Files/rwims.din"
-# ** Error (suppressible): (vsim-PLI-3084) $fscanf : Argument 1 is not a valid file descriptor.
-#    Time: 0 ns  Iteration: 0  Process: /tb_trace_parser/#INITIAL#11 File: F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv Line: 25
-# Finished reading the trace file.
-# quit -sim
-# End time: 15:21:10 on Nov 03,2024, Elapsed time: 0:00:05
-# Errors: 1, Warnings: 2
-vsim +trace_file=./Files/rwims.din LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
-# vsim "+trace_file=./Files/rwims.din" LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim" 
-# Start time: 15:22:31 on Nov 03,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt5
 # Loading sv_std.std
 # Loading work.tb_trace_parser(fast)
 # run -all
@@ -204,12 +75,112 @@ vsim +trace_file=./Files/rwims.din LLC_SV.tb_trace_parser -do "run -all" -do "qu
 # Line 9: Operation: 8, Address: bad0dad0
 # Line 10: Operation: 9, Address: b2d0bad0
 # Finished reading the trace file.
-# quit -sim
-# End time: 15:22:34 on Nov 03,2024, Elapsed time: 0:00:03
+quit -sim
+# End time: 13:15:25 on Nov 04,2024, Elapsed time: 0:02:12
+# Errors: 0, Warnings: 2
+vlib work -do vlog -sv +define+LINE=4 tb_trace_parser.sv -do vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
+# ** Error: (vlib-20003) Option "work" is unknown.
+# Usage: vlib -help
+#        vlib [-short | -dos | -long | -unix ]
+#             [-type (directory|flat)]
+#             [-compress | -nocompress]
+#             [-dirpath] <path>
+#             [-unnamed_designs <count>] [(-lock|-unlock) <design>]
+#             [-locklib|-unlocklib] <library_name>
+# Errors: 1, Warnings: 0
+vlib LLC_SV -do vlog -sv +define+LINE=4 tb_trace_parser.sv -do vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
+# ** Error: (vlib-20003) Option "LLC_SV" is unknown.
+# Usage: vlib -help
+#        vlib [-short | -dos | -long | -unix ]
+#             [-type (directory|flat)]
+#             [-compress | -nocompress]
+#             [-dirpath] <path>
+#             [-unnamed_designs <count>] [(-lock|-unlock) <design>]
+#             [-locklib|-unlocklib] <library_name>
+# Errors: 1, Warnings: 0
+vlib LLC_SV
+# ** Warning: (vlib-34) Library already exists at "LLC_SV".
 # Errors: 0, Warnings: 1
-vsim LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
-# vsim LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim" 
-# Start time: 15:23:03 on Nov 03,2024
+vlog -sv +define+LINE=4 tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 13:20:02 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# ** Error: (vlog-13069) tb_trace_parser.sv(27): near "==": syntax error, unexpected ==.
+# End time: 13:20:02 on Nov 04,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+# Compile of trace_parser.sv was successful.
+# Compile of tb_trace_parser.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vlib LLC_SV
+# ** Warning: (vlib-34) Library already exists at "LLC_SV".
+# Errors: 0, Warnings: 1
+vlog -sv +define+LINE=4 tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 13:21:02 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# ** Error: tb_trace_parser.sv(28): (vlog-2730) Undefined variable: 'LINE'.
+# End time: 13:21:02 on Nov 04,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+# Compile of trace_parser.sv was successful.
+# Compile of tb_trace_parser.sv failed with 1 errors.
+# 2 compiles, 1 failed with 1 error.
+# Compile of trace_parser.sv was successful.
+# Compile of tb_trace_parser.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vlib LLC_SV
+# ** Warning: (vlib-34) Library already exists at "LLC_SV".
+# Errors: 0, Warnings: 1
+vlog -sv +define+LINE=4 tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 14:22:32 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# ** Error: tb_trace_parser.sv(28): (vlog-2730) Undefined variable: 'LINE'.
+# End time: 14:22:32 on Nov 04,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+# Compile of trace_parser.sv was successful.
+# Compile of tb_trace_parser.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vlog -sv +define+LINE=4 tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 14:26:53 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# 
+# Top level modules:
+# 	tb_trace_parser
+# End time: 14:26:54 on Nov 04,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
+# vsim -c "+trace_file=./Files/rwims.din" tb_trace_parser -do "run -all" 
+# Start time: 14:27:09 on Nov 04,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+# run -all
+# Reading and parsing trace file: ./Files/rwims.din
+# Line 1: Operation: 0, Address: 0badbad0
+# Line 2: Operation: 1, Address: 1badbad2
+# Line 3: Operation: 2, Address: 2badbad0
+# Line 4: Operation: 3, Address: 0badbad0
+# Line 5: Operation: 4, Address: 1badbad1
+# Line 6: Operation: 5, Address: 2badbad0
+# Line 7: Operation: 6, Address: bad0bad0
+# Line 8: Operation: 7, Address: bad7bad0
+# Line 9: Operation: 8, Address: bad0dad0
+# Line 10: Operation: 9, Address: b2d0bad0
+# Finished reading the trace file.
+quit -sim
+# End time: 14:27:28 on Nov 04,2024, Elapsed time: 0:00:19
+# Errors: 0, Warnings: 5
+vsim -c tb_trace_parser -do "run -all"
+# vsim -c tb_trace_parser -do "run -all" 
+# Start time: 14:27:41 on Nov 04,2024
 # ** Note: (vsim-8009) Loading existing optimized design _opt5
 # Loading sv_std.std
 # Loading work.tb_trace_parser(fast)
@@ -230,6 +201,6 @@ vsim LLC_SV.tb_trace_parser -do "run -all" -do "quit -sim"
 # Line 13: Operation: 5, Address: 2b5dbad0
 # Line 14: Operation: 9, Address: bad0bad0
 # Finished reading the trace file.
-# quit -sim
-# End time: 15:23:07 on Nov 03,2024, Elapsed time: 0:00:04
+quit -sim
+# End time: 14:28:03 on Nov 04,2024, Elapsed time: 0:00:22
 # Errors: 0, Warnings: 1

@@ -1,9 +1,8 @@
 m255
 K4
 z2
-!s12c _opt5
-Z0 !s99 nomlopt
-Z1 !s12c _opt3
+Z0 !s12c _opt5
+Z1 !s99 nomlopt
 R0
 R1
 R0
@@ -19,32 +18,59 @@ R1
 R0
 R1
 R0
-Z2 !s12c _opt
+R1
 R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+Z2 !s12c _opt3
+R1
 R2
-R0
+R1
 R2
-R0
+R1
 R2
-R0
+R1
 R2
-R0
+R1
 R2
-R0
+R1
 R2
-R0
+R1
 R2
-R0
-R2
-R0
-R2
-R0
-R2
-R0
-R2
-R0
-R2
-R0
+R1
+Z3 !s12c _opt
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
 !s11f vlog 2023.3 2023.07, Jul 17 2023
 13
 !s112 1.1
@@ -54,108 +80,109 @@ R0
 cModel Technology
 dF:/QuestaSim/intelFPGA/23.1std
 T_opt5
-!s110 1730676066
-V8j_V1KLLZ4bDB9KMS99[P2
+!s110 1730759230
+VM9[K2KI1c_jh;Ul4ThO:h3
 04 15 4 work tb_trace_parser fast 0
-=1-ecb1d7dba325-67280562-20b-b98
-R0
+=1-ecb1d7dba325-67294a3e-b6-4704
+R1
 !s12b OEM100
 !s124 OEM10U1 
-o-quiet -auto_acc_if_foreign -work LLC_SV
-Z3 tCvgOpt 0
+o-quiet -auto_acc_if_foreign -work work
+Z4 tCvgOpt 0
 n@_opt5
 OL;O;2023.3;77
 vparser
-Z4 2F:\MSD\Final Project\GitHub\MSD_Project\trace_parser.sv
-Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z6 !s110 1730675704
+Z5 2F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv
+Z6 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z7 !s110 1730759091
 !i10b 1
 !s100 cO[M4[=^CQ[=mH672=1LB0
-I=2KHzZ`WgT<G<E]U2YHV91
+I]XR4QVa3A0U2h45>6@QG83
 S1
-Z7 dF:/MSD/Final Project/GitHub/MSD_Project
-Z8 w1730675147
-Z9 8F:\MSD\Final Project\GitHub\MSD_Project\trace_parser.sv
-Z10 FF:\MSD\Final Project\GitHub\MSD_Project\trace_parser.sv
-!i122 25
+Z8 dF:/MSD/Final Project/GitHub/MSD_Project
+Z9 w1730684727
+Z10 8F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv
+Z11 FF:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv
+!i122 51
 L0 16 10
-Z11 VDg1SIo80bB@j0V0VzS_@n1
-Z12 OL;L;2023.3;77
+Z12 VDg1SIo80bB@j0V0VzS_@n1
+Z13 OL;L;2023.3;77
 r1
 !s85 0
 31
-Z13 !s108 1730675704.000000
-Z14 !s107 F:\MSD\Final Project\GitHub\MSD_Project\trace_parser.sv|
-Z15 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|F:\MSD\Final Project\GitHub\MSD_Project\trace_parser.sv|
+Z14 !s108 1730759091.000000
+Z15 !s107 F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv|
+Z16 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|F:/MSD/Final Project/GitHub/MSD_Project/trace_parser.sv|
 !i113 0
-Z16 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R3
-vtb_trace_parser
-2F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv
-R5
-R6
-!i10b 1
-!s100 _Ql398h=NgS;RK<ePUYJi1
-I8N?c7QReKC`MfC3Pe;4I;1
-S1
-R7
-w1730675699
-8F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv
-FF:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv
-!i122 26
-Z17 L0 1 39
-R11
-R12
-r1
-!s85 0
-31
-R13
-!s107 F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/MSD/Final Project/GitHub/MSD_Project/tb_trace_parser.sv|
-!i113 0
-o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R3
-vtrace
+Z17 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R4
+vtb_trace_parser
+2tb_trace_parser.sv
+R6
+!s110 1730759214
+!i10b 1
+!s100 cP_6C7ESH9H6=^QE6U8gU3
+IG;olXgUY=kJMiNdh8QU;R1
+S1
+R8
+w1730759081
+8tb_trace_parser.sv
+Ftb_trace_parser.sv
+!i122 53
+L0 1 42
+R12
+R13
+r1
+!s85 0
+31
+!s108 1730759213.000000
+!s107 tb_trace_parser.sv|
+!s90 -reportprogress|300|-sv|+define+LINE=4|tb_trace_parser.sv|
+!i113 0
+o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -sv +define+LINE=4 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vtrace
 R5
 R6
+R7
 !i10b 1
 !s100 I?I2iNZf=PE3j;bME[LDc1
-IR[iZ>XB9a9;5d<_:j?99c2
+IKJG_0^H3g6WaPG[=AOYT63
 S1
-R7
 R8
 R9
 R10
-!i122 25
-L0 1 14
 R11
+!i122 51
+L0 1 14
 R12
+R13
 r1
 !s85 0
 31
-R13
 R14
 R15
-!i113 0
 R16
-R3
+!i113 0
+R17
+R4
 vtrace_parser
 2F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
-R5
+R6
 !s110 1730603289
 !i10b 1
 !s100 T_kZZciIn34<<SDh0g5WH2
 IYME`b@`d0?:K0a5iXV[Nj1
 S1
-R7
+R8
 w1730603276
 8F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
 FF:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv
 !i122 13
-R17
-R11
+L0 1 39
 R12
+R13
 r1
 !s85 0
 31
@@ -164,4 +191,4 @@ r1
 !s90 -reportprogress|300|-work|LLC_SV|-vopt|-sv|-stats=none|F:\MSD\Final Project\GitHub\MSD_Project\tb_llc.sv|
 !i113 0
 o-work LLC_SV -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R3
+R4
