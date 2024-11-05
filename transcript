@@ -1,187 +1,41 @@
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vlog -sv +define+LINE tb_trace_parser.sv vsim -c  +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# ** Error (suppressible): (vlog-1902) Option "-c" is not a valid option for this tool.
-# Use the -help option for complete vlog usage.
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-vlog +define+LINE tb_trace_parser.sv vsim -c  +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# ** Error (suppressible): (vlog-1902) Option "-c" is not a valid option for this tool.
-# Use the -help option for complete vlog usage.
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-vlog +define+LINE tb_trace_parser.sv vsim +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# ** Error (suppressible): (vlog-1902) Option "-do" is not a valid option for this tool.
-# Use the -help option for complete vlog usage.
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-vlib LLC_SV
-# ** Warning: (vlib-34) Library already exists at "LLC_SV".
-# Errors: 0, Warnings: 1
-vlog -sv +define+LINE LLC_SV.tb_trace_parser
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 13:09:51 on Nov 04,2024
-# vlog -reportprogress 300 -sv "+define+LINE" LLC_SV.tb_trace_parser 
-# ** Error: (vlog-7) Failed to open design unit file "LLC_SV.tb_trace_parser" in read mode.
-# No such file or directory. (errno = ENOENT)
-# End time: 13:09:52 on Nov 04,2024, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-vlog -sv +define+LINE ./LLC_SV/tb_trace_parser.sv
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 13:10:15 on Nov 04,2024
-# vlog -reportprogress 300 -sv "+define+LINE" ./LLC_SV/tb_trace_parser.sv 
-# ** Error: (vlog-7) Failed to open design unit file "./LLC_SV/tb_trace_parser.sv" in read mode.
-# No such file or directory. (errno = ENOENT)
-# End time: 13:10:15 on Nov 04,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
+vsim -voptargs=+acc LLC_SV.tb_trace_parser
+# vsim -voptargs="+acc" LLC_SV.tb_trace_parser 
+# Start time: 23:16:10 on Nov 04,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+run -all
+# Reading and parsing trace file: ./Files/default.din
+# Finished reading the trace file.
+quit -sim
+# End time: 23:16:49 on Nov 04,2024, Elapsed time: 0:00:39
+# Errors: 0, Warnings: 2
 vlog -sv +define+LINE tb_trace_parser.sv
 # Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 13:10:25 on Nov 04,2024
+# Start time: 23:19:19 on Nov 04,2024
 # vlog -reportprogress 300 -sv "+define+LINE" tb_trace_parser.sv 
 # -- Compiling module tb_trace_parser
 # 
 # Top level modules:
 # 	tb_trace_parser
-# End time: 13:10:25 on Nov 04,2024, Elapsed time: 0:00:00
+# End time: 23:19:19 on Nov 04,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -c +trace_file=./Files/rwims.din -do "run -all"
-# No design specified
-vsim -c +trace_file=./Files/rwims.din tb_trace_parser.sv -do "run -all"
-# OpenFile tb_trace_parser.sv
-# run -all
-# No Design Loaded!
-vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
-# vsim -c "+trace_file=./Files/rwims.din" tb_trace_parser -do "run -all" 
-# Start time: 13:13:13 on Nov 04,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# run -all
-# Reading and parsing trace file: ./Files/rwims.din
-# Line 1: Operation: 0, Address: 0badbad0
-# Line 2: Operation: 1, Address: 1badbad2
-# Line 3: Operation: 2, Address: 2badbad0
-# Line 4: Operation: 3, Address: 0badbad0
-# Line 5: Operation: 4, Address: 1badbad1
-# Line 6: Operation: 5, Address: 2badbad0
-# Line 7: Operation: 6, Address: bad0bad0
-# Line 8: Operation: 7, Address: bad7bad0
-# Line 9: Operation: 8, Address: bad0dad0
-# Line 10: Operation: 9, Address: b2d0bad0
-# Finished reading the trace file.
-quit -sim
-# End time: 13:15:25 on Nov 04,2024, Elapsed time: 0:02:12
-# Errors: 0, Warnings: 2
-vlib work -do vlog -sv +define+LINE=4 tb_trace_parser.sv -do vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
-# ** Error: (vlib-20003) Option "work" is unknown.
-# Usage: vlib -help
-#        vlib [-short | -dos | -long | -unix ]
-#             [-type (directory|flat)]
-#             [-compress | -nocompress]
-#             [-dirpath] <path>
-#             [-unnamed_designs <count>] [(-lock|-unlock) <design>]
-#             [-locklib|-unlocklib] <library_name>
-# Errors: 1, Warnings: 0
-vlib LLC_SV -do vlog -sv +define+LINE=4 tb_trace_parser.sv -do vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
-# ** Error: (vlib-20003) Option "LLC_SV" is unknown.
-# Usage: vlib -help
-#        vlib [-short | -dos | -long | -unix ]
-#             [-type (directory|flat)]
-#             [-compress | -nocompress]
-#             [-dirpath] <path>
-#             [-unnamed_designs <count>] [(-lock|-unlock) <design>]
-#             [-locklib|-unlocklib] <library_name>
-# Errors: 1, Warnings: 0
-vlib LLC_SV
-# ** Warning: (vlib-34) Library already exists at "LLC_SV".
-# Errors: 0, Warnings: 1
-vlog -sv +define+LINE=4 tb_trace_parser.sv
+vlog -sv +define+LINE tb_trace_parser.sv
 # Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 13:20:02 on Nov 04,2024
-# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
-# -- Compiling module tb_trace_parser
-# ** Error: (vlog-13069) tb_trace_parser.sv(27): near "==": syntax error, unexpected ==.
-# End time: 13:20:02 on Nov 04,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vlib LLC_SV
-# ** Warning: (vlib-34) Library already exists at "LLC_SV".
-# Errors: 0, Warnings: 1
-vlog -sv +define+LINE=4 tb_trace_parser.sv
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 13:21:02 on Nov 04,2024
-# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
-# -- Compiling module tb_trace_parser
-# ** Error: tb_trace_parser.sv(28): (vlog-2730) Undefined variable: 'LINE'.
-# End time: 13:21:02 on Nov 04,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv failed with 1 errors.
-# 2 compiles, 1 failed with 1 error.
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vlib LLC_SV
-# ** Warning: (vlib-34) Library already exists at "LLC_SV".
-# Errors: 0, Warnings: 1
-vlog -sv +define+LINE=4 tb_trace_parser.sv
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 14:22:32 on Nov 04,2024
-# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
-# -- Compiling module tb_trace_parser
-# ** Error: tb_trace_parser.sv(28): (vlog-2730) Undefined variable: 'LINE'.
-# End time: 14:22:32 on Nov 04,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# F:/QuestaSim/intelFPGA/23.1std/questa_fse/win64/vlog failed.
-# Compile of trace_parser.sv was successful.
-# Compile of tb_trace_parser.sv was successful.
-# 2 compiles, 0 failed with no errors.
-vlog -sv +define+LINE=4 tb_trace_parser.sv
-# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 14:26:53 on Nov 04,2024
-# vlog -reportprogress 300 -sv "+define+LINE=4" tb_trace_parser.sv 
+# Start time: 23:19:29 on Nov 04,2024
+# vlog -reportprogress 300 -sv "+define+LINE" tb_trace_parser.sv 
 # -- Compiling module tb_trace_parser
 # 
 # Top level modules:
 # 	tb_trace_parser
-# End time: 14:26:54 on Nov 04,2024, Elapsed time: 0:00:01
+# End time: 23:19:29 on Nov 04,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all"
-# vsim -c "+trace_file=./Files/rwims.din" tb_trace_parser -do "run -all" 
-# Start time: 14:27:09 on Nov 04,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading sv_std.std
-# Loading work.tb_trace_parser(fast)
-# run -all
-# Reading and parsing trace file: ./Files/rwims.din
-# Line 1: Operation: 0, Address: 0badbad0
-# Line 2: Operation: 1, Address: 1badbad2
-# Line 3: Operation: 2, Address: 2badbad0
-# Line 4: Operation: 3, Address: 0badbad0
-# Line 5: Operation: 4, Address: 1badbad1
-# Line 6: Operation: 5, Address: 2badbad0
-# Line 7: Operation: 6, Address: bad0bad0
-# Line 8: Operation: 7, Address: bad7bad0
-# Line 9: Operation: 8, Address: bad0dad0
-# Line 10: Operation: 9, Address: b2d0bad0
-# Finished reading the trace file.
-quit -sim
-# End time: 14:27:28 on Nov 04,2024, Elapsed time: 0:00:19
-# Errors: 0, Warnings: 5
 vsim -c tb_trace_parser -do "run -all"
 # vsim -c tb_trace_parser -do "run -all" 
-# Start time: 14:27:41 on Nov 04,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Start time: 23:21:10 on Nov 04,2024
+# ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.tb_trace_parser(fast)
 # run -all
@@ -202,5 +56,158 @@ vsim -c tb_trace_parser -do "run -all"
 # Line 14: Operation: 9, Address: bad0bad0
 # Finished reading the trace file.
 quit -sim
-# End time: 14:28:03 on Nov 04,2024, Elapsed time: 0:00:22
+# End time: 23:23:18 on Nov 04,2024, Elapsed time: 0:02:08
+# Errors: 0, Warnings: 1
+# Compile of trace_parser.sv was successful.
+# Compile of tb_trace_parser.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -c tb_trace_parser -do "run -all"
+# vsim -c tb_trace_parser -do "run -all" 
+# Start time: 00:02:21 on Nov 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+# run -all
+# Line 1: Operation: 0, Address: 0badbad0
+# Line 2: Operation: 0, Address: 1badbad2
+# Line 3: Operation: 1, Address: 2ba3bad0
+# Line 4: Operation: 6, Address: 0badbad0
+# Line 5: Operation: 3, Address: 1badbad1
+# Line 6: Operation: 2, Address: 2badbad0
+# Line 7: Operation: 9, Address: bad0bad0
+# Line 8: Operation: 3, Address: 0b4dbad0
+# Line 9: Operation: 4, Address: 1badbad2
+# Line 10: Operation: 8, Address: 2badbad0
+# Line 11: Operation: 7, Address: 0baebad0
+# Line 12: Operation: 3, Address: 1bad6ad1
+# Line 13: Operation: 5, Address: 2b5dbad0
+# Line 14: Operation: 9, Address: bad0bad0
+# -2147483645
+quit -sim
+# End time: 00:23:20 on Nov 05,2024, Elapsed time: 0:20:59
+# Errors: 0, Warnings: 2
+# Compile of trace_parser.sv was successful.
+# Compile of tb_trace_parser.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vlog -sv +define+DEBUG tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 00:24:18 on Nov 05,2024
+# vlog -reportprogress 300 -sv "+define+DEBUG" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# 
+# Top level modules:
+# 	tb_trace_parser
+# End time: 00:24:18 on Nov 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -c +trace_file=./Files/rwims.din tb_trace_parser -do "run -all" -do "quit -sim"
+# vsim -c "+trace_file=./Files/rwims.din" tb_trace_parser -do "run -all" -do "quit -sim" 
+# Start time: 00:28:02 on Nov 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+# run -all
+# Tracing file from ./Files/rwims.din
+# Opening file ./Files/rwims.din
+# File opened successfully
+# Reading and parsing file
+# Line 1: Operation: 0, Address: 0badbad0
+# Line 2: Operation: 1, Address: 1badbad2
+# Line 3: Operation: 2, Address: 2badbad0
+# Line 4: Operation: 3, Address: 0badbad0
+# Line 5: Operation: 4, Address: 1badbad1
+# Line 6: Operation: 5, Address: 2badbad0
+# Line 7: Operation: 6, Address: bad0bad0
+# Line 8: Operation: 7, Address: bad7bad0
+# Line 9: Operation: 8, Address: bad0dad0
+# Line 10: Operation: 9, Address: b2d0bad0
+# Finished reading the file
+# File closed successfully
+# quit -sim
+# End time: 00:28:06 on Nov 05,2024, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 2
+vlog -sv +define+DEBUG tb_trace_parser.sv
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 00:29:17 on Nov 05,2024
+# vlog -reportprogress 300 -sv "+define+DEBUG" tb_trace_parser.sv 
+# -- Compiling module tb_trace_parser
+# 
+# Top level modules:
+# 	tb_trace_parser
+# End time: 00:29:17 on Nov 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -c tb_trace_parser -do "run -all" -do "quit -sim"
+# vsim -c tb_trace_parser -do "run -all" -do "quit -sim" 
+# Start time: 00:29:41 on Nov 05,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+# run -all
+# No intput from user. Tracing default file from ./Files/default.din
+# Opening file ./Files/default.din
+# File opened successfully
+# Reading and parsing file
+# Line 1: Operation: 0, Address: 0badbad0
+# Line 2: Operation: 0, Address: 1badbad2
+# Line 3: Operation: 1, Address: 2ba3bad0
+# Line 4: Operation: 6, Address: 0badbad0
+# Line 5: Operation: 3, Address: 1badbad1
+# Line 6: Operation: 2, Address: 2badbad0
+# Line 7: Operation: 9, Address: bad0bad0
+# Line 8: Operation: 3, Address: 0b4dbad0
+# Line 9: Operation: 4, Address: 1badbad2
+# Line 10: Operation: 8, Address: 2badbad0
+# Line 11: Operation: 7, Address: 0baebad0
+# Line 12: Operation: 3, Address: 1bad6ad1
+# Line 13: Operation: 5, Address: 2b5dbad0
+# Line 14: Operation: 9, Address: bad0bad0
+# Finished reading the file
+# File closed successfully
+# quit -sim
+# End time: 00:29:43 on Nov 05,2024, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 1
+vsim -c tb_trace_parser -do "run -all" -do "quit -sim"
+# vsim -c tb_trace_parser -do "run -all" -do "quit -sim" 
+# Start time: 00:32:04 on Nov 05,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+# run -all
+# No intput from user. Tracing default file from ./Files/default.din
+# Opening file ./Files/default.din
+# File opened successfully
+# Reading and parsing file
+# Line 1: Operation: 0, Address: 0badbad0
+# Line 2: Operation: 0, Address: 1badbad2
+# Line 3: Operation: 1, Address: 2ba3bad0
+# Line 4: Operation: 6, Address: 0badbad0
+# Line 5: Operation: 3, Address: 1badbad1
+# Line 6: Operation: 2, Address: 2badbad0
+# Line 7: Operation: 9, Address: bad0bad0
+# Line 8: Operation: 3, Address: 0b4dbad0
+# Line 9: Operation: 4, Address: 1badbad2
+# Line 10: Operation: 8, Address: 2badbad0
+# Line 11: Operation: 7, Address: 0baebad0
+# Line 12: Operation: 3, Address: 1bad6ad1
+# Line 13: Operation: 5, Address: 2b5dbad0
+# Line 14: Operation: 9, Address: bad0bad0
+# Finished reading the file
+# File closed successfully
+# quit -sim
+# End time: 00:32:07 on Nov 05,2024, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 1
+vsim -c +trace_file=./Files/empty.din tb_trace_parser -do "run -all" -do "quit -sim"
+# vsim -c "+trace_file=./Files/empty.din" tb_trace_parser -do "run -all" -do "quit -sim" 
+# Start time: 00:32:28 on Nov 05,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.tb_trace_parser(fast)
+# run -all
+# Tracing file from ./Files/empty.din
+# Opening file ./Files/empty.din
+# File opened successfully
+# Reading and parsing file
+# File is empty
+# File closed successfully
+# quit -sim
+# End time: 00:32:30 on Nov 05,2024, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 1
