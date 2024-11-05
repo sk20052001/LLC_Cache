@@ -11,24 +11,45 @@ module tb_trace_parser;
 	initial begin
 		if (!$value$plusargs("trace_file=%s", trace_file)) begin
 			trace_file = "./Files/default.din";
+			`ifdef DEBUG
+				$display("No intput from user. Tracing default file from %s", trace_file);
+			`endif
+		end else begin
+			`ifdef DEBUG
+				$display("Tracing file from %s", trace_file);
+			`endif
 		end
-
+		
+		`ifdef DEBUG
+			$display("Opening file %s", trace_file);
+		`endif
+		
 		file_handle = $fopen(trace_file, "r");
-
-		//if (file_handle == 0) begin
-		//	$display("Error: Could not open file '%s'.", trace_file);
-		//	$finish;
-		//end
-
-		$display("Reading and parsing trace file: %s", trace_file);
+		
+		`ifdef DEBUG
+			if (file_handle == 0) begin
+				$display("Error in opening file '%s'.", trace_file);
+				$stop;
+			end else begin
+				$display("File opened successfully");
+			end
+		`endif
+		
+		`ifdef DEBUG
+			$display("Reading and parsing file");
+		`endif
 
 		while ($fscanf(file_handle, "%d %h", operation, address) == 2) begin
 			line_number++;
-			`ifdef LINE
-				//if(LINE == line_number)
-					$display("Line %0d: Operation: %0d, Address: %h", line_number, operation, address);
-			`endif
+			$display("Line %0d: Operation: %0d, Address: %h", line_number, operation, address);
 		end
+		
+		`ifdef DEBUG
+			if (line_number == 0)
+				$display("File is empty");
+			else
+				$display("Finished reading the file");
+		`endif
 		//while (!$feof(file_handle)) begin
 		//	line_number++;
 		//	#2;
@@ -36,7 +57,8 @@ module tb_trace_parser;
 		//end
 
     	$fclose(file_handle);
-    	$display("Finished reading the trace file.");
-
+		`ifdef DEBUG
+			$display("File closed successfully");
+		`endif
 	end
 endmodule
