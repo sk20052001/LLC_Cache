@@ -5,7 +5,6 @@ module LLC(
     input logic reset,
     input logic [31:0] addr,
     input logic wr,
-    input logic cs,
     input logic [7:0] data_in,
     output logic hit,
     output logic [7:0] data_out
@@ -39,6 +38,7 @@ module LLC(
                 end
             end
         end else begin
+            hit_line = 0;
             for (int i = 0; i < ASSOCIATIVITY; i++) begin
                 if (LLC_cache[index][i].valid && LLC_cache[index][i].tag == tag) begin
                     hit_line[i] = 1'b1;
@@ -49,6 +49,8 @@ module LLC(
                     LLC_cache[index][$clog(hit_line)].data[byte_offset] <= data_in;
                 else
                     data_out <= LLC_cache[index][$clog(hit_line)].data[byte_offset];
+                int node = 0;
+                for (int i = 3)
             end
         end
     end
