@@ -6,12 +6,11 @@ package LLC_defs;
     parameter int P_LRU = ASSOCIATIVITY - 1;
     parameter int INDEX = 14;
     parameter int BYTE_OFFSET = 6;
-    parameter int TAGS = 32 - (INDEX + BYTE_OFFSET);
+    parameter int TAG_BITS = 32 - (INDEX + BYTE_OFFSET);
 
     typedef struct {
-        logic [7:0] data [0: BYTE_OFFSET-1];
-        logic [TAGS - 1:0] tags;
-        logic [INDEX - 1:0] index;
+        logic [7:0] data [LINE_SIZE-1];
+        logic [TAG_BITS - 1:0] tag;
         logic valid;
         logic dirty;
     } cache;
