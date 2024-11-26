@@ -14,9 +14,9 @@ module LLC(
     logic [INDEX - 1:0] index;
     logic [TAG_BITS - 1:0] tag;
 
-    assign tag <= addr[31:32-TAG_BITS];
-    assign index <= addr[31-TAG_BITS:BYTE_OFFSET];
-    assign byte_offset <= addr[BYTE_OFFSET-1:0];
+    assign tag = addr[31:32-TAG_BITS];
+    assign index = addr[31-TAG_BITS:BYTE_OFFSET];
+    assign byte_offset = addr[BYTE_OFFSET-1:0];
 
     cache LLC_cache [NUM_SETS][ASSOCIATIVITY];
 
@@ -50,7 +50,11 @@ module LLC(
                 else
                     data_out <= LLC_cache[index][$clog(hit_line)].data[byte_offset];
                 int node = 0;
-                for (int i = 3)
+                logic [3:0] accessed_way = hit_line;
+                for (int i = 3; i >= 0; i--) begin
+                    p_lru[index][node] = accessed_way[i];
+                    node = node * 2 + 1 + accessed_way[i];
+                end
             end
         end
     end

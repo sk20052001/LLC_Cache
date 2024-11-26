@@ -13,5 +13,6 @@ package LLC_defs;
         logic [TAG_BITS - 1:0] tag;
         logic valid;
         logic dirty;
+        logic [1:0] mesi;
     } cache;
 endpackage
