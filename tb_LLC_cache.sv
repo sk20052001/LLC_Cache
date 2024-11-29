@@ -1,9 +1,34 @@
-module tb_trace_parser #(parameter string Default = "./Files/default.din");
+import LLC_defs::*;
+
+module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	string trace_file;
 	int file_handle;
-	int operation;
+	int operation, cacheRds, cacheWrs, cacheHits, cacheMisses;
 	logic [31:0] address;
 	int line_number = 0;
+	busOperation busOp;
+    snoopResults snoopResult;
+    messages message;
+	cache LLC_cache;
+
+	LLC DUT(
+		.clk(clk),
+		.addr(address),
+		.op(operation),
+		.cacheRds(cacheRds),
+		.cacheWrs(cacheWrs),
+		.cacheHits(cacheHits),
+		.cacheMisses(cacheMisses),
+		.busOp(busOp),
+		.snoopResult(snoopResult),
+		.message(message),
+		.cache(LLC_cache)
+	);
+
+	initial begin
+		clk = 0;
+		forever #5 clk = ~clk;
+	end
 
 	initial begin
 		if (!$value$plusargs("trace_file=%s", trace_file)) begin
@@ -77,6 +102,9 @@ module tb_trace_parser #(parameter string Default = "./Files/default.din");
 		`ifdef DEBUG
 			$display("File closed successfully");
 		`endif
+	end
+
+	always@(negedge clk) begin
 	end
 
 endmodule
