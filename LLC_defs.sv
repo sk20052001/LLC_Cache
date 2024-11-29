@@ -15,7 +15,7 @@ package LLC_defs;
 
     typedef struct {
         logic [TAG_BITS - 1:0] tag;
-        // logic valid;
+        logic valid;
         logic dirty;
         mesi_bits mesi;
     } cache;

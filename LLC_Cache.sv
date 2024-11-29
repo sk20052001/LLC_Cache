@@ -9,7 +9,7 @@ module LLC(
     output busOperation busOp,
     output snoopResults snoopResult,
     output messages message,
-    output cache LLC_cache
+    output cache LLC_cache [NUM_SETS][ASSOCIATIVITY]
 );
 
     logic [BYTE_OFFSET - 1:0] byte_offset;
@@ -20,11 +20,12 @@ module LLC(
     assign index = addr[31-TAG_BITS:BYTE_OFFSET];
     assign byte_offset = addr[BYTE_OFFSET-1:0];
 
-    cache LLC_cache [NUM_SETS][ASSOCIATIVITY];
+    // cache LLC_cache [NUM_SETS][ASSOCIATIVITY];
 
     logic [ASSOCIATIVITY - 2:0] plru [NUM_SETS];
 
-    int validLine, emptyLine;
+    int validLine, emptyLine, node;
+    logic [3:0] accessed_way;
 
     always_ff @(posedge clk) begin
         if(op == 8) begin
@@ -35,7 +36,7 @@ module LLC(
             for (int i = 0; i < NUM_SETS; i++) begin
                 plru[i] <= 0;
                 for (int j = 0; j < ASSOCIATIVITY; j++) begin
-                    // LLC_cache[i][j].valid = 0;
+                    LLC_cache[i][j].valid = 0;
                     LLC_cache[i][j].dirty = 0;
                     LLC_cache[i][j].tag = 0;
                     LLC_cache[i][j].mesi = INVALID;
@@ -101,6 +102,7 @@ module LLC(
                     4: begin
                         cacheRds += 1;
                         LLC_cache[index][validLine].mesi = INVALID;
+                        LLC_cache[index][validLine].valid = 0;
                         message = INVALIDATELINE;
                         busOp = NOBUSOP;
                         snoopResult = NORESULT;
@@ -109,12 +111,15 @@ module LLC(
                         cacheWrs += 1;
                         if(LLC_cache[index][validLine].mesi == MODIFIED) begin
                             LLC_cache[index][validLine].mesi = INVALID;
-                            message = GETLINE;
+                            LLC_cache[index][validLine].dirty = 0;
+                            LLC_cache[index][validLine].valid = 0;
+                            message = EVICTLINE;
                             busOp = WRITE;
                             snoopResult = HITM;
-                            #5 message = INVALIDATELINE;
+                            // #5 message = INVALIDATELINE;
                         end else begin
                             LLC_cache[index][validLine].mesi = INVALID;
+                            LLC_cache[index][validLine].valid = 0;
                             message = INVALIDATELINE;
                             busOp = NOBUSOP;
                             snoopResult = NORESULT;
@@ -123,6 +128,7 @@ module LLC(
                     6: begin
                         cacheWrs += 1;
                         LLC_cache[index][validLine].mesi = INVALID;
+                        LLC_cache[index][validLine].valid = 0;
                         message = INVALIDATELINE;
                         busOp = NOBUSOP;
                         snoopResult = NORESULT;
@@ -140,6 +146,7 @@ module LLC(
                         LLC_cache[index][validLine].tag = tag;
                         getSnoopResult();
                         LLC_cache[index][validLine].mesi = snoopResult == NOHIT ? EXCLUSIVE : SHARED;
+                        LLC_cache[index][validLine].valid = 1;
                     end
                     1: begin
                         cacheWrs += 1;
@@ -150,6 +157,7 @@ module LLC(
                         LLC_cache[index][validLine].tag = tag;
                         LLC_cache[index][validLine].dirty = 1;
                         LLC_cache[index][validLine].mesi = MODIFIED;
+                        LLC_cache[index][validLine].valid = 1;
                     end
                     2: begin
                         cacheRds += 1;
@@ -160,6 +168,7 @@ module LLC(
                         LLC_cache[index][validLine].tag = tag;
                         getSnoopResult();
                         LLC_cache[index][validLine].mesi = snoopResult == NOHIT ? EXCLUSIVE : SHARED;
+                        LLC_cache[index][validLine].valid = 1;
                     end
                     3: begin
                         cacheRds += 1;
@@ -211,16 +220,16 @@ module LLC(
                     if (LLC_cache[index][validLine].mesi == MODIFIED) begin
                         LLC_cache[index][validLine].mesi = INVALID;
                         LLC_cache[index][validLine].dirty = 0;
-                        message = GETLINE;
-                        busOp = WRITE;
-                        snoopResult = NORESULT;
-                        #5 message = EVICTLINE;
-                    end else begin
-                        LLC_cache[index][validLine].mesi = INVALID;
                         message = EVICTLINE;
                         busOp = WRITE;
                         snoopResult = NORESULT;
-                        #5;
+                        // #5 message = EVICTLINE;
+                    end else begin
+                        LLC_cache[index][validLine].mesi = INVALID;
+                        message = INVALIDATELINE;
+                        busOp = WRITE;
+                        snoopResult = NORESULT;
+                        // #5;
                     end
                 end else begin
                     validLine = emptyLine;
@@ -228,8 +237,8 @@ module LLC(
     endfunction
 
     function void update_PLRU();
-        int node = 0;
-        logic [3:0] accessed_way = validLine
+        node = 0;
+        accessed_way = validLine;
         for (int i = 3; i >= 0; i--) begin
             plru[index][node] = accessed_way[i];
             node = node * 2 + 1 + accessed_way[i];
@@ -237,7 +246,7 @@ module LLC(
     endfunction
 
     function void findLRU();
-        int node = 0;
+        node = 0;
         for (int i = 3; i >= 0; i--) begin
             node = (node * 2) + 1 + ~plru[index][node];
         end
@@ -249,7 +258,7 @@ module LLC(
             snoopResult = HIT;
         end else if (byte_offset[0] && !byte_offset[1]) begin
             snoopResult = HITM;
-        end else if begin
+        end else begin
             snoopResult = NOHIT;
         end
     endfunction
