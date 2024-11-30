@@ -44,7 +44,7 @@ module LLC(
             end
         end else begin
             is_Present();
-            if(validLine >= 0) begin
+            if(validLine >= 0 && op != 9) begin
                 cacheHits += 1;
                 case(op)
                     0: begin
@@ -135,7 +135,7 @@ module LLC(
                     end
                 endcase
             end else begin
-                cacheMisses += 1;
+                cacheMisses = op == 9 ? cacheMisses + 0 : cacheMisses + 1;
                 case(op)
                     0: begin
                         cacheRds += 1;

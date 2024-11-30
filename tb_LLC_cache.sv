@@ -4,7 +4,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	logic clk;
 	string trace_file;
 	int file_handle;
-	int operation, cacheRds, cacheWrs, cacheHits, cacheMisses, action;
+	int operation, cacheRds, cacheWrs, cacheHits, cacheMisses;
 	logic [31:0] address;
 	int line_number = 0;
 	busOperation busOp;
@@ -87,22 +87,22 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 			$display("Reading and parsing file");
 		`endif
 
-		while ($fscanf(file_handle, "%d %h", action, address) == 2) begin
+		while ($fscanf(file_handle, "%d %h", operation, address) == 2) begin
 			line_number++;
+			$display("Time: %t, Operation: %d, Address: %h", $realtime, operation, address);
 			// $display("Line %0d: Operation: %0d, Address: %h", line_number, operation, address);
 			@(negedge clk) begin
-				if (action >= 0 && action <= 8) begin
-					operation = action;
-				end
+
 			end
 		end
 
+		#5;
 		$display("Output:");
 		$display("Number of Cache Reads: %d", cacheRds);
 		$display("Number of Cache Writes: %d", cacheWrs);
 		$display("Number of Cache Hits: %d", cacheHits);
 		$display("Number of Cache Misses: %d", cacheMisses);
-		$display("Cache hit ratio: %0.1f", real'(cacheHits)/line_number);
+		$display("Cache hit ratio: %0.1f", real'(cacheHits)/(cacheRds + cacheWrs));
 		
 		`ifdef DEBUG
 			if (line_number == 0)
@@ -119,25 +119,29 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	end
 
 	always@(negedge clk) begin
-		if (operation >= 0 && operation <= 2) begin
-			$display("Simulate a Bus Operation and Snoop Results of LLC of other processors");
-		end else if (operation >= 3 && operation <= 6) begin
-			$display("Reporting result of our Snooping bus operation performed by other caches");
-		end
-		$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
-		$display("Communication to L1 Cache");
-		$display("Message: %s, Address: %h\n", message, address);
-		if (operation == 9) begin
-			$display("Cache contents:");
-			for(int i = 0; i < NUM_SETS; i++) begin
-				for(int j = 0; j < ASSOCIATIVITY; j++) begin
-					if(LLC_cache[i][j].valid) begin
-						$display("Tag: %h, MESI State: %s", LLC_cache[i][j].tag, LLC_cache[i][j].mesi);
+		if (operation != 8) begin
+			if (operation >= 0 && operation <= 2) begin
+				$display("Time: %t", $realtime);
+				$display("Simulate a Bus Operation and Snoop Results of LLC of other processors");
+			end else if (operation >= 3 && operation <= 6) begin
+				$display("Time: %t", $realtime);
+				$display("Reporting result of our Snooping bus operation performed by other caches");
+			end
+			$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
+			$display("Communication to L1 Cache");
+			$display("Message: %s, Address: %h\n", message, address);
+			if (operation == 9) begin
+				$display("Time: %t", $realtime);
+				$display("Cache contents:");
+				for(int i = 0; i < NUM_SETS; i++) begin
+					for(int j = 0; j < ASSOCIATIVITY; j++) begin
+						if(LLC_cache[i][j].valid) begin
+							$display("Tag: %h, MESI State: %s", LLC_cache[i][j].tag, LLC_cache[i][j].mesi);
+						end
 					end
 				end
+				$display();
 			end
-			$display();
-			$stop();
 		end
 	end
 
