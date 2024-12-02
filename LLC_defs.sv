@@ -8,10 +8,15 @@ package LLC_defs;
     parameter int BYTE_OFFSET = 6;
     parameter int TAG_BITS = 32 - (INDEX + BYTE_OFFSET);
 
+    typedef enum logic [1:0] {INVALID, SHARED, EXCLUSIVE, MODIFIED} mesi_bits;
+    typedef enum {READ, WRITE, INVALIDATE, RWIM, NOBUSOP} busOperation;
+    typedef enum {NOHIT, HIT, HITM, NORESULT} snoopResults;
+    typedef enum {GETLINE, SENDLINE, INVALIDATELINE, EVICTLINE, NOMESSAGE } messages;
+
     typedef struct {
-        logic [7:0] data [LINE_SIZE-1];
         logic [TAG_BITS - 1:0] tag;
         logic valid;
         logic dirty;
+        mesi_bits mesi;
     } cache;
 endpackage
