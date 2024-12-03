@@ -1,0 +1,94 @@
+m255
+K4
+z2
+!s11f vlog 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/23.1std
+vLLC
+Z0 2C:/MSD_Project/MSD_Project/LLC_Cache.sv
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 DXx4 work 8 LLC_defs 0 22 @fPSJLkQTUGCF`VT`87;m1
+DXx4 work 17 LLC_Cache_sv_unit 0 22 e=I6k3JW4YE]e3cg:>X<O0
+Z3 !s110 1733111041
+VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+!i10b 1
+!s100 ]QkHf`g5;6hhRRAnFUloR2
+ISNGOj:5I8EP4kLj52e2jc1
+!s105 LLC_Cache_sv_unit
+S1
+Z4 dC:/MSD_Project/MSD_Project
+Z5 w1733109573
+Z6 8C:/MSD_Project/MSD_Project/LLC_Cache.sv
+Z7 FC:/MSD_Project/MSD_Project/LLC_Cache.sv
+!i122 3
+L0 3 264
+Z8 OL;L;2023.3;77
+31
+Z9 !s108 1733111041.000000
+Z10 !s107 C:/MSD_Project/MSD_Project/LLC_Cache.sv|
+Z11 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/MSD_Project/MSD_Project/LLC_Cache.sv|
+!i113 0
+Z12 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z13 tCvgOpt 0
+n@l@l@c
+XLLC_Cache_sv_unit
+R0
+R1
+R2
+R3
+Ve=I6k3JW4YE]e3cg:>X<O0
+r1
+!s85 0
+!i10b 1
+!s100 _PQjeI9maSi_0CkFPAEQ`0
+Ie=I6k3JW4YE]e3cg:>X<O0
+!i103 1
+S1
+R4
+R5
+R6
+R7
+!i122 3
+Z14 L0 1 0
+R8
+31
+R9
+R10
+R11
+!i113 0
+R12
+R13
+n@l@l@c_@cache_sv_unit
+XLLC_defs
+2C:\MSD_Project\MSD_Project\LLC_defs.sv
+R1
+R3
+!i10b 1
+!s100 k=c2L>I6UN>VZG4Wen=192
+I@fPSJLkQTUGCF`VT`87;m1
+S1
+R4
+w1733109512
+8C:\MSD_Project\MSD_Project\LLC_defs.sv
+FC:\MSD_Project\MSD_Project\LLC_defs.sv
+!i122 4
+R14
+V@fPSJLkQTUGCF`VT`87;m1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:\MSD_Project\MSD_Project\LLC_defs.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:\MSD_Project\MSD_Project\LLC_defs.sv|
+!i113 0
+R12
+R13
+n@l@l@c_defs

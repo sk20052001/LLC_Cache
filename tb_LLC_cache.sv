@@ -141,4 +141,14 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		end
 	end
 
+	/*task read_request(input [ADDR_WIDTH-1:0] addr);
+	begin
+		@(posedge clk);
+      operation = 3'b000;
+      address = addr;
+      @(posedge clk);
+      $display("READ: Addr = %h, Hit = %b, Miss = %b", addr, hit, miss);
+    end
+  endtask*/
+
 endmodule
