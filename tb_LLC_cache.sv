@@ -4,7 +4,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	logic clk;
 	string trace_file;
 	int file_handle;
-	int operation, cacheRds, cacheWrs, cacheHits, cacheMisses;
+	integer operation, cacheRds, cacheWrs, cacheHits, cacheMisses, hold;
 	logic [31:0] address;
 	int line_number = 0;
 	busOperation busOp;
@@ -23,7 +23,8 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		.busOp(busOp),
 		.snoopResult(snoopResult),
 		.message(message),
-		.LLC_cache(LLC_cache)
+		.LLC_cache(LLC_cache),
+		.hold(hold)
 	);
 
 	initial begin
@@ -92,7 +93,15 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 			$display("Time: %t, Operation: %d, Address: %h", $realtime, operation, address);
 			// $display("Line %0d: Operation: %0d, Address: %h", line_number, operation, address);
 			@(negedge clk) begin
-
+				if (hold == 2) begin
+					@(negedge clk) begin
+					end
+					@(negedge clk) begin
+					end
+				end else if (hold == 1) begin
+					@(negedge clk) begin
+					end
+				end
 			end
 		end
 
