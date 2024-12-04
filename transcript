@@ -109,3 +109,87 @@ vsim work.tb_LLC_cache
 # Error loading design
 # End time: 21:15:27 on Dec 03,2024, Elapsed time: 0:00:01
 # Errors: 2, Warnings: 7
+# Break key hit
+# Compile of tb_LLC_cache.sv was successful.
+# Compile of LLC_Cache.sv was successful.
+# Compile of LLC_defs.sv was successful.
+# Compile of tb_LLC_cache.sv was successful.
+# 3 compiles, 0 failed with no errors.
+vsim work.tb_LLC_cache
+# vsim work.tb_LLC_cache 
+# Start time: 21:33:54 on Dec 03,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.LLC_defs(fast)
+# Loading work.LLC_Cache_sv_unit(fast)
+# Loading work.tb_LLC_cache_sv_unit(fast)
+# Loading work.tb_LLC_cache(fast)
+run -all
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: READ, Address: 00408f24, Snoop Result: NOHIT
+# Communication to L1 Cache
+# Message: GETLINE, Address: 00408f24
+# 
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: READ, Address: 00408f24, Snoop Result: HIT
+# Communication to L1 Cache
+# Message: SENDLINE, Address: 00408f24
+# 
+# BusOp: READ, Address: 00408ed4, Snoop Result: HIT
+# Communication to L1 Cache
+# Message: SENDLINE, Address: 00408ed4
+# 
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: READ, Address: 10019d94, Snoop Result: HIT
+# Communication to L1 Cache
+# Message: SENDLINE, Address: 10019d94
+# 
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: NOBUSOP, Address: 10019d94, Snoop Result: NORESULT
+# Communication to L1 Cache
+# Message: SENDLINE, Address: 10019d94
+# 
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: RWIM, Address: 100230bc, Snoop Result: NORESULT
+# Communication to L1 Cache
+# Message: SENDLINE, Address: 100230bc
+# 
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: INVALIDATE, Address: 10019d94, Snoop Result: NORESULT
+# Communication to L1 Cache
+# Message: GETLINE, Address: 10019d94
+# 
+# Simulate a Bus Operation and Snoop Results of LLC of other processors
+# BusOp: READ, Address: 00408ed4, Snoop Result: HIT
+# Communication to L1 Cache
+# Message: SENDLINE, Address: 00408ed4
+# 
+# Reporting result of our Snooping bus operation performed by other caches
+# BusOp: NOBUSOP, Address: 00408efc, Snoop Result: HIT
+# Communication to L1 Cache
+# Message: NOMESSAGE, Address: 00408efc
+# 
+# Reporting result of our Snooping bus operation performed by other caches
+# BusOp: NOBUSOP, Address: 00408f04, Snoop Result: NORESULT
+# Communication to L1 Cache
+# Message: NOMESSAGE, Address: 00408f04
+# 
+# Reporting result of our Snooping bus operation performed by other caches
+# BusOp: WRITE, Address: 100230b8, Snoop Result: HITM
+# Communication to L1 Cache
+# Message: EVICTLINE, Address: 100230b8
+# 
+# Reporting result of our Snooping bus operation performed by other caches
+# BusOp: NOBUSOP, Address: 100230cc, Snoop Result: NORESULT
+# Communication to L1 Cache
+# Message: NOMESSAGE, Address: 100230cc
+# 
+# Output:
+# Number of Cache Reads:           5
+# Number of Cache Writes:           4
+# Number of Cache Hits:           4
+# Number of Cache Misses:           5
+# Cache hit ratio: 0.4
+# ** Note: $stop    : C:/MSD_Project/MSD_Project/tb_LLC_cache.sv(121)
+#    Time: 110 ns  Iteration: 1  Instance: /tb_LLC_cache
+# Break at C:/MSD_Project/MSD_Project/tb_LLC_cache.sv line 121

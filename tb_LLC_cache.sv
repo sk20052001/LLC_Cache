@@ -132,6 +132,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		$display("Message: %s, Address: %h\n", message, address);
 		if (operation == 9) begin
 			$display("Cache contents:");
+			read_request();
 			for(int i = 0; i < NUM_SETS; i++) begin
 				for(int j = 0; j < ASSOCIATIVITY; j++) begin
 					if(LLC_cache[i][j].valid) begin
