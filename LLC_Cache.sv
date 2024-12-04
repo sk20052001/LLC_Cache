@@ -214,27 +214,37 @@ module LLC(
         return;
     endfunction
 
-    function void evictLine();
-        if (emptyLine == -1) begin
-                    findLRU();
-                    if (LLC_cache[index][validLine].mesi == MODIFIED) begin
-                        LLC_cache[index][validLine].mesi = INVALID;
-                        LLC_cache[index][validLine].dirty = 0;
-                        message = EVICTLINE;
-                        busOp = WRITE;
-                        snoopResult = NORESULT;
-                        // #5 message = EVICTLINE;
-                    end else begin
-                        LLC_cache[index][validLine].mesi = INVALID;
-                        message = INVALIDATELINE;
-                        busOp = WRITE;
-                        snoopResult = NORESULT;
-                        // #5;
-                    end
-                end else begin
-                    validLine = emptyLine;
-                end
-    endfunction
+   function int WhichWay(input int set);
+    	int way;
+    	if(cache[set].PLRU[0]==0) begin
+      		if(cache[set].PLRU[2]==0) begin
+        		if(cache[set].PLRU[6]==0) 
+          			way = 7;
+        		else
+          			way = 6;	
+      		end else begin
+        		if(cache[set].PLRU[5]==0)
+          			way = 5;
+        		else
+          			way = 4;
+      		end
+    	end else begin
+      		if(cache[set].PLRU[1]==0) begin
+        		if(cache[set].PLRU[4]==0) 
+          			way = 3;
+        		else
+          			way=2;
+      		end else begin
+        		if(cache[set].PLRU[3]==0)
+          			way = 1;
+        		else
+          			way = 0;
+      		end
+    	end
+    return way;
+
+endfunction
+
 
     function void UpdateLRU(input int set, way);
 	if(way>=4) begin
