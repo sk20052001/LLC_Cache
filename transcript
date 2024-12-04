@@ -80,3 +80,32 @@ run -all
 # ** Note: $stop    : C:/MSD_Project/MSD_Project/tb_LLC_cache.sv(118)
 #    Time: 110 ns  Iteration: 1  Instance: /tb_LLC_cache
 # Break at C:/MSD_Project/MSD_Project/tb_LLC_cache.sv line 118
+quit -sim
+# End time: 21:08:21 on Dec 03,2024, Elapsed time: 0:03:23
+# Errors: 0, Warnings: 5
+# Compile of tb_LLC_cache.sv failed with 2 errors.
+# Compile of LLC_Cache.sv was successful.
+# Compile of LLC_defs.sv was successful.
+# Compile of tb_LLC_cache.sv was successful with warnings.
+# 3 compiles, 0 failed with no errors.
+# Compile of LLC_Cache.sv was successful.
+# Compile of LLC_defs.sv was successful.
+# Compile of tb_LLC_cache.sv was successful.
+# 3 compiles, 0 failed with no errors.
+vsim work.tb_LLC_cache
+# vsim work.tb_LLC_cache 
+# Start time: 21:15:26 on Dec 03,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error (suppressible): C:\MSD_Project\MSD_Project\tb_LLC_cache.sv(153): (vopt-7063) Failed to find 'hit' in hierarchical name 'hit'.
+#         Region: tb_LLC_cache
+# ** Error (suppressible): C:\MSD_Project\MSD_Project\tb_LLC_cache.sv(153): (vopt-7063) Failed to find 'miss' in hierarchical name 'miss'.
+#         Region: tb_LLC_cache
+# Optimization failed
+# ** Warning: (vopt-31) Unable to unlink file "C:/MSD_Project/MSD_Project/work/@_opt/_lib3_0.qpg".
+# ** Warning: (vopt-31) Unable to unlink file "C:/MSD_Project/MSD_Project/work/@_opt/_lib3_0.qtl".
+# The process cannot access the file because it is being used by another process. (GetLastError() = 32)
+# ** Warning: (vopt-133) Unable to remove directory "C:/MSD_Project/MSD_Project/work/@_opt".
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=3.
+# Error loading design
+# End time: 21:15:27 on Dec 03,2024, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 7

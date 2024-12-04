@@ -1,5 +1,8 @@
 import LLC_defs::*;
 
+  parameter ADDR_WIDTH = 32;
+  parameter DATA_WIDTH = 64;
+
 module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	logic clk;
 	string trace_file;
@@ -147,7 +150,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
       operation = 3'b000;
       address = addr;
       @(posedge clk);
-      $display("Test_case: read_request, READ: Addr = %h, Hit = %b, Miss = %b", addr, hit, miss);
+      $display("Test_case: read_request, READ: Addr = %h, Hit = %b, Miss = %b", addr, cacheHits, cacheMisses);
     end
   endtask
 
