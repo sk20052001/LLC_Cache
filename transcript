@@ -193,3 +193,7 @@ run -all
 # ** Note: $stop    : C:/MSD_Project/MSD_Project/tb_LLC_cache.sv(121)
 #    Time: 110 ns  Iteration: 1  Instance: /tb_LLC_cache
 # Break at C:/MSD_Project/MSD_Project/tb_LLC_cache.sv line 121
+quit -sim
+# End time: 21:58:57 on Dec 03,2024, Elapsed time: 0:25:03
+# Errors: 0, Warnings: 3
+# Compile of tb_LLC_cache.sv failed with 1 errors.
