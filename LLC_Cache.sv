@@ -236,23 +236,36 @@ module LLC(
                 end
     endfunction
 
-    function void update_PLRU();
-        node = 0;
-        accessed_way = validLine;
-        for (int i = 3; i >= 0; i--) begin
-            plru[index][node] = accessed_way[i];
-            node = node * 2 + 1 + accessed_way[i];
-        end
-    endfunction
+    function void UpdateLRU(input int set, way);
+	if(way>=4) begin
+	  cache[set].PLRU[0]=1;
+	    if(way>=6) begin
+      		cache[set].PLRU[2]=1;
+      	 	if(way==6) cache[set].PLRU[6]=0;
+      		else cache[set].PLRU[6]=1;
+   	    end else begin
+      		cache[set].PLRU[2]=0;
+      		if(way==4) cache[set].PLRU[5]=0;
+      		else cache[set].PLRU[5]=1;
+    	    end
+ 	end else begin
+  	   cache[set].PLRU[0]=0;
+  	   if(way>=2) begin
+    		cache[set].PLRU[1]=1;
+    		if(way==2) cache[set].PLRU[4]=0;
+    		else cache[set].PLRU[4]=1;
+  	   end else begin
+    		cache[set].PLRU[1]=0;
+    		if(way==1) cache[set].PLRU[3]=1;
+    		else cache[set].PLRU[3]=0;
+  	   end
+	end
 
-    function void findLRU();
-        node = 0;
-        for (int i = 3; i >= 0; i--) begin
-            node = (node * 2) + 1 + ~plru[index][node];
-        end
-        validLine = node - ASSOCIATIVITY - 1;
-    endfunction
+	//DEBUG_MODE PRINT
+	if(debug_mode == "GET_DISPLAYS")
+		$display("PLRU bits are %0b",cache[set].PLRU);
 
+endfunction
     function void getSnoopResult();
         if (!byte_offset[0] && !byte_offset[1]) begin
             snoopResult = HIT;
