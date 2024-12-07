@@ -276,7 +276,7 @@ endfunction
 		$display("PLRU bits are %0b",cache[set].PLRU);
 
 endfunction
-    function void getSnoopResult();
+   /* function void getSnoopResult();
         if (!byte_offset[0] && !byte_offset[1]) begin
             snoopResult = HIT;
         end else if (byte_offset[0] && !byte_offset[1]) begin
@@ -284,6 +284,16 @@ endfunction
         end else begin
             snoopResult = NOHIT;
         end
-    endfunction
+    endfunction*/
+    function string GetSnoopResult(input logic [5:0]ByteSelect);
+
+	if(ByteSelect[1:0] == 2'b00) 
+		return "HIT";
+	else if(ByteSelect[1:0] == 2'b01)
+		return "HITM";
+	else 
+		return "NOHIT";
+
+endfunction
 
 endmodule
