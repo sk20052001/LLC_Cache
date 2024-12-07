@@ -93,7 +93,8 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 			`ifdef DEBUG
 				$display("Time: %t, Operation: %d, Address: %h", $realtime, operation, address);
 			`endif
-			@(negedge clk) beginif (hold == 1) begin
+			@(negedge clk) begin
+				if (hold == 1) begin
 					@(negedge clk) begin
 					end
 				end
@@ -125,16 +126,6 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	`ifdef DEBUG
 		always@(negedge clk) begin
 			if (operation != 8) begin
-				if (operation >= 0 && operation <= 2) begin
-					$display("Simulate a Bus Operation and Snoop Results of LLC of other processors");
-				end else if (operation >= 3 && operation <= 6) begin
-					$display("Reporting result of our Snooping bus operation performed by other caches");
-				end
-				if (operation != 9) begin
-					$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
-					$display("Communication to L1 Cache");
-					$display("Message: %s, Address: %h\n", message, address);
-				end
 				if (operation == 9) begin
 					$display("Cache contents:");
 					for(int i = 0; i < NUM_SETS; i++) begin
@@ -144,8 +135,20 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 							end
 						end
 					end
-					$display();
+				end else begin
+					if (operation >= 0 && operation <= 2 && busOp != NOBUSOP) begin
+						$display("Simulate a Bus Operation and Snoop Results of LLC of other processors");
+						$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
+					end else if (operation >= 3 && operation <= 6 && snoopResult != NORESULT) begin
+						$display("Reporting result of our Snooping bus operation performed by other caches");
+						$display("Address: %h, Snoop Result: %s", address, snoopResult);
+					end
+					if (message != NOMESSAGE) begin
+						$display("Communication to L1 Cache");
+						$display("Message: %s, Address: %h", message, address);
+					end
 				end
+				$display();
 			end
 		end
 	`endif
