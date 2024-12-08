@@ -254,11 +254,13 @@ module LLC(
     endfunction
 
     function void getSnoopResult();
-       case(byte_offset)
-       2'b00: snoopResult = HIT;
-       2'b10: snoopResult = HITM;
-       default: snoopResult = NOHIT;
-       endcase
+        if (!byte_offset[0] && !byte_offset[1]) begin
+            snoopResult = HIT;
+        end else if (byte_offset[0] && !byte_offset[1]) begin
+            snoopResult = HITM;
+        end else begin
+            snoopResult = NOHIT;
+        end
     endfunction
 
 endmodule
