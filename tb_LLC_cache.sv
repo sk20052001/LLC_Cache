@@ -127,12 +127,13 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		end else if (operation >= 3 && operation <= 6) begin
 			$display("Reporting result of our Snooping bus operation performed by other caches");
 		end
+		read_request(32'h10019d94);
 		$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
 		$display("Communication to L1 Cache");
 		$display("Message: %s, Address: %h\n", message, address);
 		if (operation == 9) begin
 			$display("Cache contents:");
-			read_request();
+			read_request(32'h10019d94);
 			for(int i = 0; i < NUM_SETS; i++) begin
 				for(int j = 0; j < ASSOCIATIVITY; j++) begin
 					if(LLC_cache[i][j].valid) begin
@@ -151,7 +152,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
       operation = 3'b000;
       address = addr;
       @(posedge clk);
-      $display("Test_case: read_request, READ: Addr = %h, Hit = %b, Miss = %b", addr, cacheHits, cacheMisses);
+      $display("Test_case: read_request, READ: Addr = %h, Hit = %d, Miss = %d", addr, cacheHits, cacheMisses);
     end
   endtask
 
