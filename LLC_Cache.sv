@@ -227,7 +227,7 @@ module LLC(
     function void update_PLRU();
         node = 0;
         accessed_way = validLine;
-        for (int i = 3; i >= 0; i--) begin
+        for (int i = PLRU_TREE_DEPTH; i >= 0; i--) begin
             plru[index][node] = accessed_way[i];
             node = node * 2 + 1 + accessed_way[i];
         end
@@ -235,7 +235,7 @@ module LLC(
 
     function void findLRU();
         node = 0;
-        for (int i = 3; i >= 0; i--) begin
+        for (int i = PLRU_TREE_DEPTH; i >= 0; i--) begin
             node = (node * 2) + 1 + !plru[index][node];
         end
         validLine = node - (ASSOCIATIVITY - 1);
