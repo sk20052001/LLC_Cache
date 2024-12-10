@@ -111,7 +111,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		$display("Number of Cache Writes: %d", cacheWrs);
 		$display("Number of Cache Hits: %d", cacheHits);
 		$display("Number of Cache Misses: %d", cacheMisses);
-		$display("Cache hit ratio: %0.3f", cacheHits == 0 ? cacheHits : real'(cacheHits)/(cacheHits + cacheMisses));
+		$display("Cache hit ratio: %0.1f %%", cacheHits == 0 ? cacheHits : (real'(cacheHits)/(cacheHits + cacheMisses)) * 100);
 		
 		`ifdef DEBUG
 			if (line_number == 0)
