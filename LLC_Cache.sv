@@ -245,36 +245,6 @@ module LLC(
         return;
     endfunction
 
-<<<<<<< HEAD
-   function int WhichWay(input int set);
-    	int way;
-    	if(cache[set].PLRU[0]==0) begin
-      		if(cache[set].PLRU[2]==0) begin
-        		if(cache[set].PLRU[6]==0) 
-          			way = 7;
-        		else
-          			way = 6;	
-      		end else begin
-        		if(cache[set].PLRU[5]==0)
-          			way = 5;
-        		else
-          			way = 4;
-      		end
-    	end else begin
-      		if(cache[set].PLRU[1]==0) begin
-        		if(cache[set].PLRU[4]==0) 
-          			way = 3;
-        		else
-          			way=2;
-      		end else begin
-        		if(cache[set].PLRU[3]==0)
-          			way = 1;
-        		else
-          			way = 0;
-      		end
-    	end
-    return way;
-=======
     function void evictLine();
         findLRU();
         if (LLC_cache[index][validLine].mesi == MODIFIED) begin
@@ -294,12 +264,16 @@ module LLC(
             snoopResult = NORESULT;
         end
     endfunction
->>>>>>> sanjeev
 
-endfunction
+    function void update_PLRU();
+        node = 0;
+        accessed_way = validLine;
+        for (int i = 3; i >= 0; i--) begin
+            plru[index][node] = accessed_way[i];
+            node = node * 2 + 1 + accessed_way[i];
+        end
+    endfunction
 
-<<<<<<< HEAD
-=======
     function void findLRU();
         node = 0;
         for (int i = 3; i >= 0; i--) begin
@@ -307,39 +281,8 @@ endfunction
         end
         validLine = node - (ASSOCIATIVITY - 1);
     endfunction
->>>>>>> sanjeev
 
-    function void UpdateLRU(input int set, way);
-	if(way>=4) begin
-	  cache[set].PLRU[0]=1;
-	    if(way>=6) begin
-      		cache[set].PLRU[2]=1;
-      	 	if(way==6) cache[set].PLRU[6]=0;
-      		else cache[set].PLRU[6]=1;
-   	    end else begin
-      		cache[set].PLRU[2]=0;
-      		if(way==4) cache[set].PLRU[5]=0;
-      		else cache[set].PLRU[5]=1;
-    	    end
- 	end else begin
-  	   cache[set].PLRU[0]=0;
-  	   if(way>=2) begin
-    		cache[set].PLRU[1]=1;
-    		if(way==2) cache[set].PLRU[4]=0;
-    		else cache[set].PLRU[4]=1;
-  	   end else begin
-    		cache[set].PLRU[1]=0;
-    		if(way==1) cache[set].PLRU[3]=1;
-    		else cache[set].PLRU[3]=0;
-  	   end
-	end
-
-	//DEBUG_MODE PRINT
-	if(debug_mode == "GET_DISPLAYS")
-		$display("PLRU bits are %0b",cache[set].PLRU);
-
-endfunction
-   /* function void getSnoopResult();
+    function void getSnoopResult();
         if (!byte_offset[0] && !byte_offset[1]) begin
             snoopResult = HIT;
         end else if (byte_offset[0] && !byte_offset[1]) begin
@@ -347,16 +290,6 @@ endfunction
         end else begin
             snoopResult = NOHIT;
         end
-    endfunction*/
-    function string GetSnoopResult(input logic [5:0]ByteSelect);
-
-	if(ByteSelect[1:0] == 2'b00) 
-		return "HIT";
-	else if(ByteSelect[1:0] == 2'b01)
-		return "HITM";
-	else 
-		return "NOHIT";
-
-endfunction
+    endfunction
 
 endmodule
