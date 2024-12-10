@@ -9,7 +9,8 @@ module LLC(
     output snoopResults snoopResult,
     output messages message,
     output cache LLC_cache [NUM_SETS][ASSOCIATIVITY],
-    output integer hold
+    output integer hold,
+    output logic [ASSOCIATIVITY - 2:0] plru [NUM_SETS]
 );
 
     logic [BYTE_OFFSET - 1:0] byte_offset;
@@ -20,7 +21,7 @@ module LLC(
     assign index = addr[31-TAG_BITS:BYTE_OFFSET];
     assign byte_offset = addr[BYTE_OFFSET-1:0];
 
-    logic [ASSOCIATIVITY - 2:0] plru [NUM_SETS];
+    // logic [ASSOCIATIVITY - 2:0] plru [NUM_SETS];
 
     int validLine, emptyLine, node;
     logic [3:0] accessed_way;

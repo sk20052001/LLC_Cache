@@ -11,6 +11,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
     snoopResults snoopResult;
     messages message;
 	cache LLC_cache [NUM_SETS][ASSOCIATIVITY];
+	logic [ASSOCIATIVITY - 2:0] plru [NUM_SETS];
 
 	LLC DUT(
 		.clk(clk),
@@ -24,7 +25,8 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		.snoopResult(snoopResult),
 		.message(message),
 		.LLC_cache(LLC_cache),
-		.hold(hold)
+		.hold(hold),
+		.plru(plru)
 	);
 
 	initial begin
@@ -137,7 +139,9 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 						for(int j = 0; j < ASSOCIATIVITY; j++) begin
 							if(LLC_cache[i][j].valid) begin
 								if (set) begin
-									$display("Set %d:", i);
+									$display();
+									$display("Index: %d", i);
+									$display("PLRU: %b", plru[i]);
 									set = 0;
 								end
 								$display("Line: %d: Tag: %h, MESI State: %s", j, LLC_cache[i][j].tag, LLC_cache[i][j].mesi);
