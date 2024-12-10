@@ -130,25 +130,6 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		$stop();
 	end
 
-<<<<<<< HEAD
-	always@(negedge clk) begin
-		if (operation >= 0 && operation <= 2) begin
-			$display("Simulate a Bus Operation and Snoop Results of LLC of other processors");
-		end else if (operation >= 3 && operation <= 6) begin
-			$display("Reporting result of our Snooping bus operation performed by other caches");
-		end
-		read_request(32'h10019d94);
-		$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
-		$display("Communication to L1 Cache");
-		$display("Message: %s, Address: %h\n", message, address);
-		if (operation == 9) begin
-			$display("Cache contents:");
-			read_request(32'h10019d94);
-			for(int i = 0; i < NUM_SETS; i++) begin
-				for(int j = 0; j < ASSOCIATIVITY; j++) begin
-					if(LLC_cache[i][j].valid) begin
-						$display("Tag: %h, MESI State: %s", LLC_cache[i][j].tag, LLC_cache[i][j].mesi);
-=======
 	`ifdef DEBUG
 		always@(negedge clk) begin
 			if (operation != 8) begin
@@ -180,7 +161,6 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 					if (message != NOMESSAGE) begin
 						$display("Communication to L1 Cache");
 						$display("Message: %s, Address: %h", message, address);
->>>>>>> sanjeev
 					end
 				end
 				$display();
