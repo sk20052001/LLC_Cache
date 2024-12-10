@@ -7,7 +7,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 	logic clk;
 	string trace_file;
 	int file_handle;
-	integer operation, cacheRds, cacheWrs, cacheHits, cacheMisses, hold;
+	integer operation, cacheRds, cacheWrs, cacheHits, cacheMisses, hold, set;
 	logic [31:0] address;
 	int line_number = 0;
 	busOperation busOp;
@@ -32,7 +32,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 
 	initial begin
 		clk = 0;
-		forever #5 clk = ~clk;
+		forever #3 clk = ~clk;
 	end
 
 	initial begin
@@ -91,6 +91,10 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 			$display("Reading and parsing file");
 		`endif
 
+		operation = 8;
+		@(negedge clk) begin
+		end
+
 		while ($fscanf(file_handle, "%d %h", operation, address) == 2) begin
 			line_number++;
 			`ifdef DEBUG
@@ -110,7 +114,7 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 		$display("Number of Cache Writes: %d", cacheWrs);
 		$display("Number of Cache Hits: %d", cacheHits);
 		$display("Number of Cache Misses: %d", cacheMisses);
-		$display("Cache hit ratio: %0.1f", real'(cacheHits)/(cacheRds + cacheWrs));
+		$display("Cache hit ratio: %0.3f", cacheHits == 0 ? cacheHits : real'(cacheHits)/(cacheHits + cacheMisses));
 		
 		`ifdef DEBUG
 			if (line_number == 0)
@@ -151,9 +155,14 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 				if (operation == 9) begin
 					$display("Cache contents:");
 					for(int i = 0; i < NUM_SETS; i++) begin
+						set = 1;
 						for(int j = 0; j < ASSOCIATIVITY; j++) begin
 							if(LLC_cache[i][j].valid) begin
-								$display("Tag: %h, MESI State: %s", LLC_cache[i][j].tag, LLC_cache[i][j].mesi);
+								if (set) begin
+									$display("Set %d:", i);
+									set = 0;
+								end
+								$display("Line: %d: Tag: %h, MESI State: %s", j, LLC_cache[i][j].tag, LLC_cache[i][j].mesi);
 							end
 						end
 					end
@@ -163,6 +172,9 @@ module tb_LLC_cache #(parameter string Default = "./Files/default.din");
 						$display("BusOp: %s, Address: %h, Snoop Result: %s", busOp, address, snoopResult);
 					end else if (operation >= 3 && operation <= 6 && snoopResult != NORESULT) begin
 						$display("Reporting result of our Snooping bus operation performed by other caches");
+						if (busOp != NOBUSOP) begin
+							$write("BusOp: %s, ", busOp);
+						end
 						$display("Address: %h, Snoop Result: %s", address, snoopResult);
 					end
 					if (message != NOMESSAGE) begin
