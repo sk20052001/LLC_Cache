@@ -267,11 +267,12 @@ module LLC(
 
     function void update_PLRU();
         node = 0;
-        accessed_way = validLine;
-        for (int i = 3; i >= 0; i--) begin
-            plru[index][node] = accessed_way[i];
-            node = node * 2 + 1 + accessed_way[i];
-        end
+        foreach (accessed_way[i]) begin
+        PLRU [index] [node] = accesses_way[i];
+        node = (node <<1) +1 +accessed_way[i];
+        end 
+        endfunction
+        
     endfunction
 
     function void findLRU();
