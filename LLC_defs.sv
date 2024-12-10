@@ -7,7 +7,7 @@ package LLC_defs;
     parameter int INDEX = 14;
     parameter int BYTE_OFFSET = 6;
     parameter int TAG_BITS = 32 - (INDEX + BYTE_OFFSET);
-    parameter int PLRU_TREE_DEPTH = 3
+    parameter int PLRU_TREE_DEPTH = 3;
 
     typedef enum logic [1:0] {INVALID, SHARED, EXCLUSIVE, MODIFIED} mesi_bits;
     typedef enum {READ, WRITE, INVALIDATE, RWIM, NOBUSOP} busOperation;
